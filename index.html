@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Raj Gorane | Chartered Accountant</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --navy:      #0a1628;
+  --navy2:     #0f2040;
+  --navy3:     #162d56;
+  --gold:      #c9a84c;
+  --gold-lt:   #e8c97a;
+  --cream:     #f4f1eb;
+  --white:     #ffffff;
+  --muted:     #7a8ea8;
+  --text:      #1a2740;
+  --light-bg:  #eef2f8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
+
+/* HERO */
+.hero{background:var(--navy);min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:70px 24px 100px;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 15% 25%,rgba(201,168,76,.10) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 85% 75%,rgba(22,45,86,.9) 0%,transparent 60%);}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(201,168,76,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(201,168,76,.035) 1px,transparent 1px);background-size:72px 72px;}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.10);border:1px solid rgba(201,168,76,.30);border-radius:100px;padding:7px 20px;font-size:.7rem;font-weight:600;letter-spacing:.20em;text-transform:uppercase;color:var(--gold);margin-bottom:30px;animation:fadeDown .8s ease both;position:relative;z-index:1;}
+.hero-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease infinite;}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.4rem,9vw,7rem);font-weight:900;color:var(--white);line-height:1;letter-spacing:-.02em;animation:fadeDown .9s .1s ease both;position:relative;z-index:1;}
+.hero-name span{color:var(--gold);display:block;}
+.hero-designation{margin-top:18px;font-size:clamp(.9rem,2vw,1.15rem);font-weight:300;color:rgba(244,241,235,.55);letter-spacing:.08em;animation:fadeDown 1s .2s ease both;position:relative;z-index:1;}
+.hero-divider{width:56px;height:2px;background:linear-gradient(90deg,var(--gold),var(--gold-lt));margin:28px auto;animation:fadeDown 1s .3s ease both;position:relative;z-index:1;}
+.hero-contacts{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 22px;animation:fadeDown 1.1s .4s ease both;position:relative;z-index:1;}
+.hero-contacts a{display:flex;align-items:center;gap:7px;color:rgba(244,241,235,.62);text-decoration:none;font-size:.85rem;font-weight:400;transition:color .25s;}
+.hero-contacts a:hover{color:var(--gold);}
+.hero-scroll{position:absolute;bottom:34px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,.25);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;animation:fadeDown 1.4s .9s ease both;z-index:1;}
+.hero-scroll .arrow{width:1px;height:40px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease infinite;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(10,22,40,.97);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,168,76,.12);padding:0 36px;display:flex;align-items:center;justify-content:space-between;height:62px;}
+.nav-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--gold);letter-spacing:.04em;}
+.nav-links{display:flex;gap:24px;list-style:none;}
+.nav-links a{color:rgba(244,241,235,.5);text-decoration:none;font-size:.76rem;font-weight:500;letter-spacing:.09em;text-transform:uppercase;transition:color .2s;}
+.nav-links a:hover{color:var(--gold);}
+
+/* STATS */
+.stats-strip{background:var(--navy2);border-top:1px solid rgba(201,168,76,.12);border-bottom:1px solid rgba(201,168,76,.12);padding:42px 32px;}
+.stats-grid{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);}
+.stat-item{text-align:center;padding:14px 16px;border-right:1px solid rgba(201,168,76,.12);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;color:var(--gold);line-height:1;display:block;}
+.stat-label{margin-top:7px;font-size:.72rem;color:rgba(244,241,235,.42);letter-spacing:.1em;text-transform:uppercase;}
+
+/* SECTION */
+.section{max-width:1120px;margin:0 auto;padding:90px 36px;}
+.section-label{font-size:.7rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-weight:700;color:var(--navy);line-height:1.15;margin-bottom:50px;}
+.section-title em{font-style:italic;color:var(--gold);}
+.section-title.light{color:var(--cream);}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:38px;}
+.timeline::before{content:'';position:absolute;left:0;top:12px;bottom:12px;width:2px;background:linear-gradient(to bottom,var(--gold),rgba(201,168,76,.05));}
+.tl-item{position:relative;margin-bottom:54px;opacity:0;transform:translateX(-22px);transition:opacity .6s ease,transform .6s ease;}
+.tl-item.visible{opacity:1;transform:translateX(0);}
+.tl-dot{position:absolute;left:-44px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--cream);box-shadow:0 0 0 4px rgba(201,168,76,.22);}
+.tl-meta{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px;}
+.tl-period{font-family:'DM Mono',monospace;font-size:.73rem;color:var(--gold);background:rgba(201,168,76,.1);padding:3px 11px;border-radius:4px;border:1px solid rgba(201,168,76,.22);}
+.tl-company{font-size:.78rem;color:var(--muted);font-weight:600;}
+.tl-role{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.tl-subdesc{font-size:.81rem;color:var(--muted);font-style:italic;margin-bottom:18px;line-height:1.6;}
+
+/* ACCORDION */
+.acc-group{display:flex;flex-direction:column;gap:10px;}
+.acc-item{border:1px solid rgba(10,22,40,.10);border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 2px 10px rgba(10,22,40,.04);}
+.acc-header{display:flex;align-items:center;gap:14px;padding:13px 18px;cursor:pointer;background:#fff;border:none;width:100%;text-align:left;transition:background .2s;}
+.acc-header:hover{background:var(--light-bg);}
+.acc-icon-box{width:36px;height:36px;border-radius:9px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1rem;}
+.acc-title{font-size:.88rem;font-weight:700;color:var(--navy);flex:1;}
+.acc-arrow{font-size:.72rem;color:var(--gold);transition:transform .3s;font-weight:700;margin-left:auto;}
+.acc-header.open .acc-arrow{transform:rotate(180deg);}
+.acc-body{max-height:0;overflow:hidden;transition:max-height .45s cubic-bezier(.4,0,.2,1);}
+.acc-body.open{max-height:1400px;}
+.acc-inner{padding:4px 20px 18px 70px;}
+.acc-inner ul{list-style:none;display:flex;flex-direction:column;gap:10px;}
+.acc-inner ul li{font-size:.83rem;color:#3a4e6a;line-height:1.72;padding-left:18px;position:relative;}
+.acc-inner ul li::before{content:'';position:absolute;left:0;top:9px;width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.acc-inner ul li strong{color:var(--navy);font-weight:700;}
+
+/* TAGS */
+.tl-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px;}
+.tag{font-size:.69rem;font-weight:700;letter-spacing:.06em;padding:4px 12px;border-radius:100px;border:1px solid;}
+.tag-navy{border-color:rgba(10,22,40,.18);color:var(--navy);background:rgba(10,22,40,.05);}
+.tag-gold{border-color:rgba(201,168,76,.40);color:#7a6020;background:rgba(201,168,76,.10);}
+.tag-teal{border-color:rgba(14,116,144,.30);color:#0e7490;background:rgba(14,116,144,.07);}
+.tag-rose{border-color:rgba(190,18,60,.25);color:#9f1239;background:rgba(190,18,60,.07);}
+.tag-green{border-color:rgba(21,128,61,.25);color:#15803d;background:rgba(21,128,61,.07);}
+
+/* EDUCATION */
+.edu-grid{display:flex;flex-direction:column;gap:13px;}
+.edu-card{background:#fff;border:1px solid rgba(10,22,40,.08);border-radius:14px;padding:20px 26px;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;box-shadow:0 2px 12px rgba(10,22,40,.04);opacity:0;transform:translateY(16px);transition:opacity .5s ease,transform .5s ease,box-shadow .25s;}
+.edu-card.visible{opacity:1;transform:translateY(0);}
+.edu-card:hover{box-shadow:0 8px 28px rgba(10,22,40,.09);transform:translateY(-2px);}
+.edu-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--navy),var(--navy3));display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-weight:900;font-size:.95rem;color:var(--gold);flex-shrink:0;}
+.edu-body h3{font-family:'Playfair Display',serif;font-size:1.02rem;font-weight:700;color:var(--navy);}
+.edu-body p{font-size:.79rem;color:var(--muted);margin-top:3px;}
+.edu-score{text-align:right;flex-shrink:0;}
+.edu-pct{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:900;color:var(--navy);display:block;}
+.edu-remark{font-size:.69rem;color:var(--gold);font-weight:700;display:block;margin-top:2px;}
+
+/* SKILLS */
+.skills-bg{background:var(--navy2);}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(228px,1fr));gap:18px;}
+.skill-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,168,76,.14);border-radius:14px;padding:24px 22px;opacity:0;transform:translateY(20px);transition:opacity .5s ease,transform .5s ease,background .25s;}
+.skill-card.visible{opacity:1;transform:translateY(0);}
+.skill-card:hover{background:rgba(201,168,76,.07);transform:translateY(-3px);}
+.skill-icon{font-size:1.55rem;margin-bottom:12px;}
+.skill-title{font-size:.88rem;font-weight:700;color:var(--cream);margin-bottom:8px;}
+.skill-items{font-size:.78rem;color:rgba(244,241,235,.42);line-height:1.9;}
+
+/* ACHIEVEMENTS */
+.achieve-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(278px,1fr));gap:20px;}
+.achieve-card{background:#fff;border:1px solid rgba(10,22,40,.08);border-radius:14px;padding:28px;box-shadow:0 2px 12px rgba(10,22,40,.04);position:relative;overflow:hidden;opacity:0;transform:scale(.97);transition:opacity .5s ease,transform .5s ease;}
+.achieve-card.visible{opacity:1;transform:scale(1);}
+.achieve-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--navy),var(--navy3));}
+.achieve-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:900;color:rgba(10,22,40,.07);line-height:1;margin-bottom:8px;}
+.achieve-text{font-size:.87rem;color:#3a4e6a;line-height:1.68;}
+.achieve-badge{display:inline-flex;align-items:center;gap:5px;margin-top:12px;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy3);}
+
+/* CONTACT */
+.form-label{display:block;font-size:.73rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:8px;}
+.form-input{width:100%;background:#fff;border:1.5px solid rgba(10,22,40,.12);border-radius:10px;padding:12px 16px;font-family:'DM Sans',sans-serif;font-size:.88rem;color:var(--text);outline:none;transition:border-color .2s,box-shadow .2s;}
+.form-input::placeholder{color:#b0bec8;}
+.form-input:focus{border-color:var(--navy3);box-shadow:0 0 0 3px rgba(22,45,86,.12);}
+.form-btn{display:inline-flex;align-items:center;gap:10px;background:var(--navy);color:var(--gold);border:2px solid var(--navy);border-radius:10px;padding:13px 34px;font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:700;letter-spacing:.07em;cursor:pointer;transition:background .22s,transform .18s;}
+.form-btn:hover{background:var(--navy3);border-color:var(--navy3);transform:translateY(-2px);}
+.form-btn:disabled{opacity:.6;cursor:not-allowed;transform:none!important;}
+
+/* RESUME */
+.resume-section{background:var(--navy);padding:80px 36px;text-align:center;}
+.resume-title{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--white);margin-bottom:14px;}
+.resume-title em{font-style:italic;color:var(--gold);}
+.resume-sub{font-size:.92rem;color:rgba(244,241,235,.45);margin-bottom:38px;max-width:500px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.resume-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap;}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--gold);color:var(--navy);border:2px solid var(--gold);border-radius:12px;padding:14px 36px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:700;letter-spacing:.06em;cursor:pointer;text-decoration:none;transition:background .22s,transform .18s,box-shadow .22s;}
+.btn-primary:hover{background:var(--gold-lt);border-color:var(--gold-lt);transform:translateY(-3px);box-shadow:0 12px 30px rgba(201,168,76,.25);}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;background:transparent;color:rgba(244,241,235,.7);border:2px solid rgba(201,168,76,.3);border-radius:12px;padding:14px 36px;font-family:'DM Sans',sans-serif;font-size:.9rem;font-weight:600;letter-spacing:.06em;cursor:pointer;text-decoration:none;transition:border-color .22s,color .22s,transform .18s;}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-3px);}
+.resume-note{margin-top:22px;font-size:.73rem;color:rgba(244,241,235,.22);letter-spacing:.06em;}
+
+/* FOOTER */
+footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);padding:44px 36px;text-align:center;}
+.footer-name{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700;color:var(--gold);margin-bottom:8px;}
+.footer-sub{font-size:.78rem;color:rgba(244,241,235,.28);letter-spacing:.1em;}
+.footer-contact{margin-top:20px;display:flex;justify-content:center;gap:24px;flex-wrap:wrap;}
+.footer-contact a{color:rgba(244,241,235,.42);text-decoration:none;font-size:.8rem;transition:color .2s;}
+.footer-contact a:hover{color:var(--gold);}
+
+/* ANIMATIONS */
+@keyframes fadeDown{from{opacity:0;transform:translateY(-16px);}to{opacity:1;transform:translateY(0);}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(.8);}}
+@keyframes scrollPulse{0%{opacity:0;transform:scaleY(0);transform-origin:top;}50%{opacity:1;}100%{opacity:0;transform:scaleY(1);transform-origin:top;}}
+
+/* RESPONSIVE */
+@media(max-width:900px){.stats-grid{grid-template-columns:repeat(3,1fr);}.stat-item:nth-child(3){border-right:none;}}
+@media(max-width:640px){.stats-grid{grid-template-columns:1fr 1fr;}.stat-item:nth-child(2),.stat-item:nth-child(4){border-right:none;}nav .nav-links{display:none;}.section{padding:64px 20px;}.edu-card{grid-template-columns:auto 1fr;}.edu-score{grid-column:2;}.acc-inner{padding:4px 14px 16px 14px;}}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-badge"><span class="dot"></span>Chartered Accountant · ICAI · First Attempt</div>
+  <h1 class="hero-name">Raj<span>Gorane</span></h1>
+  <p class="hero-designation">Finance &amp; Taxation &nbsp;·&nbsp; ERP Implementation &nbsp;·&nbsp; Automation &amp; Analytics</p>
+  <div class="hero-divider"></div>
+  <div class="hero-contacts">
+    <a href="tel:XXXXXXXXXX">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.94 1.18 2 2 0 012.91.01h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L7.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+      XXXXXXXXXX
+    </a>
+    <a href="mailto:rajgorane12@gmail.com">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      rajgorane12@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/raj-gorane-a31753233/" target="_blank" rel="noopener">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn Profile
+    </a>
+    <a href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Tilak Nagar, Indore
+    </a>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="arrow"></div></div>
+</section>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">R. Gorane · CA</div>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#articleship">Articleship</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="#resume">Resume</a></li>
+  </ul>
+</nav>
+
+<!-- STATS -->
+<div class="stats-strip">
+  <div class="stats-grid">
+    <div class="stat-item"><span class="stat-num">66.8%</span><span class="stat-label">CA Final Score</span></div>
+    <div class="stat-item"><span class="stat-num">3+</span><span class="stat-label">Years Articleship</span></div>
+    <div class="stat-item"><span class="stat-num">₹2.4Cr+</span><span class="stat-label">Tax Relief Secured</span></div>
+    <div class="stat-item"><span class="stat-num">400+</span><span class="stat-label">Leases Processed</span></div>
+    <div class="stat-item"><span class="stat-num">96.6%</span><span class="stat-label">Class XII · District Topper</span></div>
+  </div>
+</div>
+
+<!-- WORK EXPERIENCE -->
+<section id="experience">
+  <div class="section">
+    <div class="section-label">Professional Career</div>
+    <h2 class="section-title">Work <em>Experience</em></h2>
+    <div class="timeline">
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta"><span class="tl-period">May 2025 – Present</span><span class="tl-company">ALLEN Career Institute, Kota</span></div>
+        <div class="tl-role">Assistant Manager – Finance</div>
+        <p class="tl-subdesc">One of India's largest coaching institutions · 3 lakh+ students annually · 60+ cities</p>
+        <div class="acc-group">
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(10,22,40,.06);">📋</div>
+              <span class="acc-title">Financial Reporting &amp; Lease Accounting</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Prepared financial statements for <strong>overseas entities</strong>, ensuring compliance with local GAAP for group consolidation.</li>
+              <li>Applied <strong>Ind AS 116</strong> to 400+ leases — including modifications and terminations — computing ROU assets, lease liabilities, and P&amp;L impact on Excel without any specialised software.</li>
+              <li>Assisted in <strong>Statutory Audit</strong>: prepared Related Party Transaction (RPT), FD, Loan &amp; Advances schedules; resolved auditor queries on leases and other expenses.</li>
+            </ul></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(10,22,40,.06);">⚙️</div>
+              <span class="acc-title">Oracle ERP Implementation</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Core team member in <strong>Oracle ERP rollout</strong> — designed Chart of Accounts, Fixed Asset Register, and Tax structures.</li>
+              <li>Co-ordinated with Implementation Partner and IT team for <strong>FA movement software development and integration</strong>.</li>
+              <li>Coordinated with Cost Auditor — reviewed cost items, prepared inputs for the Cost Audit report, and resolved queries.</li>
+            </ul></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(10,22,40,.06);">🤖</div>
+              <span class="acc-title">Automation, MIS &amp; Analytics</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Managed end-to-end MIS process — from data cleaning to dashboards covering travel, student, revenue, and geographical data for senior decision-making.</li>
+              <li>Automated <strong>MSME Form-1 filing</strong> using Python (ledger → MCA-ready file), eliminating manual effort entirely.</li>
+              <li>Built an <strong>ML-based bank narration tagging tool</strong> achieving 90%+ accuracy for Cash MIS reporting.</li>
+            </ul></div></div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-navy">Ind AS 116</span><span class="tag tag-navy">Oracle ERP</span>
+          <span class="tag tag-gold">Financial Reporting</span><span class="tag tag-teal">Power BI / MIS</span>
+          <span class="tag tag-teal">Python · ML</span><span class="tag tag-green">Cost Audit</span>
+        </div>
+      </div>
+
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta"><span class="tl-period">Jan 2025 – Apr 2025</span><span class="tl-company">Raj Ratan Tours &amp; Travels, Indore</span></div>
+        <div class="tl-role">Finance &amp; Operations Consultant</div>
+        <p class="tl-subdesc">Est. 2004 · 40+ luxury coaches · Multi-state inter-city bus operations</p>
+        <div class="acc-group">
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(10,22,40,.06);">🛠️</div>
+              <span class="acc-title">Automation &amp; System Development</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Built Excel-based tools for <strong>Trip Sheet automation</strong> (General, Summary, Diesel, Mileage formats).</li>
+              <li>Developed <strong>Excel-to-Tally import utility</strong> for accurate, error-free accounting data entry.</li>
+              <li>Designed a linked database for <strong>driver &amp; cleaner tracking</strong> (advances, allowances, expenses) and auto-generated Luggage Statements for Agents.</li>
+            </ul></div></div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(10,22,40,.06);">📊</div>
+              <span class="acc-title">Financial Review &amp; People Development</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Reviewed ticket booking reports to ensure correct <strong>revenue recognition</strong>; reconciled receipts across systems.</li>
+              <li>Assisted in hiring CA &amp; MBA candidates — including job promotion, screening, and designing Excel-based case studies.</li>
+              <li>Trained staff on <strong>PivotTables, VLOOKUP</strong> and introduced AI tools (ChatGPT) to enhance daily workflow efficiency.</li>
+            </ul></div></div>
+          </div>
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-navy">Excel Automation</span><span class="tag tag-gold">Tally ERP</span>
+          <span class="tag tag-teal">Revenue Reconciliation</span><span class="tag tag-rose">Team Training</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLESHIP -->
+<section id="articleship" style="background:var(--light-bg);">
+  <div class="section">
+    <div class="section-label">3 Years of Intensive CA Training</div>
+    <h2 class="section-title">Articleship <em>Experience</em></h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-meta"><span class="tl-period">Apr 2022 – Apr 2025</span><span class="tl-company">M/s Khandelwal Kakani &amp; Co., Indore</span></div>
+        <div class="tl-role">Articled Assistant</div>
+        <p class="tl-subdesc">Leading CA firm in Central India since 1978 · 9 Partners · Expertise in Direct &amp; Indirect Taxation and Audit matters</p>
+        <div class="acc-group">
+
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(201,168,76,.12);">🧾</div>
+              <span class="acc-title">Indirect Taxation – GST</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Managed end-to-end GST compliance — filing <strong>GSTR-1, GSTR-3B, GSTR-9/9C</strong> and reconciling GSTR-2A with books for clients across work contracts, security services, legal, and passenger travel industries.</li>
+              <li>Provided <strong>tax planning and advisory</strong> on taxability, exemptions, and classification to optimise tax liabilities and ensure compliance.</li>
+              <li>Performed interest calculations, prepared detailed submissions and brief explanations on <strong>ITC reversals under Rule 37 and Section 50(3) of the CGST Act, 2017</strong> — successfully led to the dropping of an <strong>interest demand of approximately ₹24 Lacs</strong>, with the Commissioner (Appeals), CGST, Indore deciding in favour of the appellant.</li>
+              <li>Represented a case before the <strong>GST Adjudicating Authority on GST registration under Section 22</strong> — created charts explaining the difference between taxable and zero-rated supplies in GSTR-1, GSTR-3B, and GSTR-9, leading to an <strong>order passed in favour of the taxpayer</strong>.</li>
+            </ul></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(201,168,76,.12);">💰</div>
+              <span class="acc-title">Direct Taxation – Income Tax</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Handled <strong>ITR filing via CompuOffice and the Income Tax Portal</strong>, advance tax calculation, and comprehensive tax planning for individuals, HUFs, firms/LLPs, trusts, and private limited companies.</li>
+              <li>Prepared and filed <strong>TDS/TCS returns</strong>, ensuring compliance with applicable provisions and deadlines.</li>
+              <li>Assisted in an assessment involving <strong>₹84 Lacs of escaped income cited as bogus sales</strong> — provided chronological documentation and briefed the senior advocate. Advocate successfully challenged the validity of the order under <strong>Section 148 of the Income Tax Act, 1961</strong>, leading to proceedings being <strong>stayed by the court</strong>.</li>
+              <li>Researched and analysed relevant case laws, compiled case books, and assisted in drafting for an <strong>ITAT appeal — resulting in allowance of ₹2.33 Crores exemption under Section 54B</strong>.</li>
+            </ul></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(201,168,76,.12);">🤖</div>
+              <span class="acc-title">Automation – VBA, TDL &amp; Excel</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Developed <strong>VBA code to automate the amendment process of invoices in GSTR-1A</strong> — for which no GST utility or software was available. This <strong>reduced processing time by over 70%</strong> and eliminated manual errors entirely.</li>
+              <li>Created an <strong>Excel-to-Tally import tool by editing TDL (Tally Definition Language)</strong> — automated accounting data entry and <strong>improved efficiency by 90%</strong>, eliminating manual entry systems.</li>
+              <li>Built multiple <strong>VBA Excel functions for TDS interest and income tax calculations</strong> — improving compliance efficiency, reducing manual calculations, and saving significant time in quarterly filings.</li>
+            </ul></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(201,168,76,.12);">🔍</div>
+              <span class="acc-title">Audit &amp; Assurance</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Conducted <strong>Tax Audits</strong> for various clients and <strong>Charitable &amp; Religious Trusts</strong> — prepared audit reports, reviewed financial statements, and ensured compliance with direct tax laws.</li>
+              <li>Conducted <strong>Statutory Audits of private companies</strong> engaged in work contract services using <strong>NwayERP Software</strong>.</li>
+              <li>Team member in <strong>Central Statutory Audit of a Public Sector Bank</strong> — branch and advances audits, verifying loan documentation, and evaluating compliance with regulatory requirements.</li>
+              <li>Assisted in <strong>Forensic Audit of a manufacturing firm</strong> for an insurance company — verified creditors, stock valuation, and financial discrepancies arising from a <strong>post-fire incident</strong>.</li>
+            </ul></div></div>
+          </div>
+
+          <div class="acc-item">
+            <button class="acc-header" onclick="toggleAcc(this)">
+              <div class="acc-icon-box" style="background:rgba(201,168,76,.12);">🏛️</div>
+              <span class="acc-title">Corporate Compliance &amp; Finance</span>
+              <span class="acc-arrow">▼</span>
+            </button>
+            <div class="acc-body"><div class="acc-inner"><ul>
+              <li>Preparation and review of <strong>financial statements, audit reports, and CARO 2020</strong>.</li>
+              <li>Assisted in annual filing of <strong>AOC-4, MGT-7, DPT-3, DIR-3/12, ADT-01</strong> and drafted resolutions for corporate actions ensuring full ROC compliance.</li>
+              <li>Managed the change of <strong>Name and Object of a Section 8 Company</strong> — handled all legal formalities and regulatory requirements end-to-end.</li>
+              <li>Conducted <strong>Credit Appraisal under Credit Monitoring Arrangement (CMA)</strong> for appropriate credit sanction.</li>
+            </ul></div></div>
+          </div>
+
+        </div>
+        <div class="tl-tags">
+          <span class="tag tag-gold">GST Compliance</span>
+          <span class="tag tag-gold">ITC Reversals · Rule 37</span>
+          <span class="tag tag-navy">Direct Taxation</span>
+          <span class="tag tag-navy">ITAT · Sec 54B</span>
+          <span class="tag tag-teal">Statutory Audit</span>
+          <span class="tag tag-teal">Forensic Audit</span>
+          <span class="tag tag-rose">VBA Automation</span>
+          <span class="tag tag-rose">TDL</span>
+          <span class="tag tag-green">ROC Filings</span>
+          <span class="tag tag-green">CMA Credit Appraisal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section">
+    <div class="section-label">Academic Background</div>
+    <h2 class="section-title">Education &amp; <em>Qualifications</em></h2>
+    <div class="edu-grid">
+      <div class="edu-card"><div class="edu-icon">CA</div><div class="edu-body"><h3>CA Final</h3><p>ICAI · Nov 2024 · Exemption in 4 Subjects</p></div><div class="edu-score"><span class="edu-pct">66.83%</span><span class="edu-remark">First Attempt · No Coaching</span></div></div>
+      <div class="edu-card"><div class="edu-icon">CA</div><div class="edu-body"><h3>CA Intermediate</h3><p>ICAI · Dec 2021 · Exemption in Group 1</p></div><div class="edu-score"><span class="edu-pct">60.25%</span><span class="edu-remark">482 / 800</span></div></div>
+      <div class="edu-card"><div class="edu-icon">CA</div><div class="edu-body"><h3>CA Foundation</h3><p>ICAI · Dec 2020</p></div><div class="edu-score"><span class="edu-pct">70.25%</span><span class="edu-remark">Passed with Distinction</span></div></div>
+      <div class="edu-card"><div class="edu-icon">B</div><div class="edu-body"><h3>B.Com (CA)</h3><p>DAVV · Apr 2023</p></div><div class="edu-score"><span class="edu-pct">72.44%</span><span class="edu-remark">First Division</span></div></div>
+      <div class="edu-card"><div class="edu-icon">12</div><div class="edu-body"><h3>Class 12th</h3><p>CBSE · Mar 2020</p></div><div class="edu-score"><span class="edu-pct">96.6%</span><span class="edu-remark">District Topper</span></div></div>
+      <div class="edu-card"><div class="edu-icon">10</div><div class="edu-body"><h3>Class 10th</h3><p>CBSE · Mar 2018 · 90+ in Maths &amp; English</p></div><div class="edu-score"><span class="edu-pct">82.4%</span><span class="edu-remark">412 / 500</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="skills-bg">
+  <div class="section">
+    <div class="section-label" style="color:var(--gold-lt);">Technical Arsenal</div>
+    <h2 class="section-title light">Skills &amp; <em>Expertise</em></h2>
+    <div class="skills-grid">
+      <div class="skill-card"><div class="skill-icon">🧾</div><div class="skill-title">Indirect Taxation</div><div class="skill-items">GST · GSTR-1/3B/9C · ITC Reversals · Advisory · Litigation · Adjudicating Authority</div></div>
+      <div class="skill-card"><div class="skill-icon">💰</div><div class="skill-title">Direct Taxation</div><div class="skill-items">ITR · TDS/TCS · Advance Tax · Tax Planning · ITAT Representation · Sec 54B / 148</div></div>
+      <div class="skill-card"><div class="skill-icon">📊</div><div class="skill-title">Financial Reporting</div><div class="skill-items">Ind AS 116 · Local GAAP · Consolidation · CARO 2020 · Related Party Transactions</div></div>
+      <div class="skill-card"><div class="skill-icon">⚙️</div><div class="skill-title">ERP &amp; Software</div><div class="skill-items">Oracle ERP · Tally / NwayERP · CompuOffice GST/IT/TDS · Chart of Accounts Design</div></div>
+      <div class="skill-card"><div class="skill-icon">🤖</div><div class="skill-title">Automation &amp; ML</div><div class="skill-items">Python · VBA · TDL · ML Bank Tagging (90%+ Acc.) · MSME Form Automation</div></div>
+      <div class="skill-card"><div class="skill-icon">📈</div><div class="skill-title">Analytics &amp; BI</div><div class="skill-items">Advanced Excel · Power Query · Power BI · MS Access · MIS Dashboards</div></div>
+      <div class="skill-card"><div class="skill-icon">🔍</div><div class="skill-title">Audit &amp; Assurance</div><div class="skill-items">Statutory Audit · Tax Audit · Forensic Audit · PSU Bank Branch Audit</div></div>
+      <div class="skill-card"><div class="skill-icon">🏛️</div><div class="skill-title">Corporate Compliance</div><div class="skill-items">ROC Filings · AOC-4 · MGT-7 · DPT-3 · Section 8 Companies · CMA Appraisal</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section">
+    <div class="section-label">Recognition</div>
+    <h2 class="section-title">Achievements &amp; <em>Milestones</em></h2>
+    <div class="achieve-grid">
+      <div class="achieve-card"><div class="achieve-num">01</div><p class="achieve-text">Cleared <strong>CA Final in the very First Attempt</strong> without any private coaching — scoring 66.83% with exemptions in 4 subjects. A testament to rigorous self-study and discipline.</p><div class="achieve-badge">⭐ First Attempt · ICAI</div></div>
+      <div class="achieve-card"><div class="achieve-num">02</div><p class="achieve-text">Secured <strong>₹24 Lacs interest relief</strong> before Commissioner (Appeals), CGST, Indore, and supported an <strong>ITAT appeal allowing ₹2.33 Cr exemption</strong> under Section 54B.</p><div class="achieve-badge">⚖️ Tax Litigation Wins</div></div>
+      <div class="achieve-card"><div class="achieve-num">03</div><p class="achieve-text">Awarded <strong>First Rank in GMCS Batch</strong> for outstanding Presentation Skills, receiving a cash reward for excellence in delivering impactful presentations using MS PowerPoint.</p><div class="achieve-badge">🏆 GMCS Batch Topper</div></div>
+      <div class="achieve-card"><div class="achieve-num">04</div><p class="achieve-text"><strong>District Topper in Class 12 (96.6%)</strong> under CBSE board — demonstrating consistent academic excellence at every stage of education.</p><div class="achieve-badge">🎓 District Topper</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" style="background:var(--light-bg);">
+  <div class="section">
+    <div class="section-label">Get In Touch</div>
+    <h2 class="section-title">Send a <em>Message</em></h2>
+    <div style="max-width:640px;margin:0 auto;">
+      <form id="contactForm">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:18px;">
+          <div><label class="form-label">Your Name</label><input type="text" name="name" placeholder="Full Name" required class="form-input"/></div>
+          <div><label class="form-label">Email Address</label><input type="email" name="email" placeholder="you@example.com" required class="form-input"/></div>
+        </div>
+        <div style="margin-bottom:18px;"><label class="form-label">Subject</label><input type="text" name="subject" placeholder="How can I help?" class="form-input"/></div>
+        <div style="margin-bottom:28px;"><label class="form-label">Message</label><textarea name="message" rows="5" placeholder="Write your message here..." required class="form-input" style="resize:vertical;min-height:130px;"></textarea></div>
+        <button type="submit" class="form-btn">
+          <span id="btnText">Send Message</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+        <div id="formSuccess" style="display:none;margin-top:18px;padding:14px 20px;background:rgba(21,128,61,.07);border:1px solid rgba(21,128,61,.2);border-radius:10px;font-size:.87rem;color:#15803d;font-weight:600;text-align:center;">✅ Message sent! I'll get back to you soon.</div>
+        <div id="formError" style="display:none;margin-top:18px;padding:14px 20px;background:rgba(190,18,60,.05);border:1px solid rgba(190,18,60,.2);border-radius:10px;font-size:.87rem;color:#9f1239;font-weight:600;text-align:center;">❌ Something went wrong. Please try again or email directly.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- RESUME DOWNLOAD -->
+<section id="resume" class="resume-section">
+  <div style="max-width:680px;margin:0 auto;">
+    <p class="section-label" style="text-align:center;">Ready to Connect?</p>
+    <h2 class="resume-title">Download My <em>Resume</em></h2>
+    <p class="resume-sub">A concise summary of my qualifications, experience, and achievements — ready for your review or to share with your team.</p>
+    <div class="resume-btns">
+      <a href="#" class="btn-primary" onclick="generateResumePDF(event)">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+        Download Resume
+      </a>
+      <a href="https://www.linkedin.com/in/raj-gorane-a31753233/" target="_blank" rel="noopener" class="btn-outline">
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        View LinkedIn Profile
+      </a>
+    </div>
+    <p class="resume-note">Opens as an HTML file · Print to PDF for best results · Last updated 2025</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-name">Raj Gorane · CA</div>
+  <div class="footer-sub">Chartered Accountant · Tilak Nagar, Indore, Madhya Pradesh</div>
+  <div class="footer-contact">
+    <a href="tel:XXXXXXXXXX">📞 XXXXXXXXXX</a>
+    <a href="mailto:rajgorane12@gmail.com">✉️ rajgorane12@gmail.com</a>
+    <a href="https://www.linkedin.com/in/raj-gorane-a31753233/" target="_blank">🔗 LinkedIn</a>
+  </div>
+  <p style="margin-top:28px;font-size:.68rem;color:rgba(244,241,235,.18);letter-spacing:.09em;">© 2025 Raj Gorane · All Rights Reserved</p>
+</footer>
+
+<script>
+/* Accordion */
+function toggleAcc(btn) {
+  const body = btn.nextElementSibling;
+  const isOpen = body.classList.contains('open');
+  const group = btn.closest('.acc-group');
+  group.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
+  group.querySelectorAll('.acc-header.open').forEach(h => h.classList.remove('open'));
+  if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+}
+
+/* Scroll animations */
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.tl-item,.edu-card,.skill-card,.achieve-card').forEach(el => observer.observe(el));
+
+/* Contact form */
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = this.querySelector('.form-btn');
+  const btnText = document.getElementById('btnText');
+  const success = document.getElementById('formSuccess');
+  const error = document.getElementById('formError');
+  success.style.display = 'none'; error.style.display = 'none';
+  btnText.textContent = 'Sending\u2026'; btn.disabled = true;
+  try {
+    const res = await fetch('https://formspree.io/f/xlgpdwkl', {
+      method: 'POST', headers: { 'Accept': 'application/json' }, body: new FormData(this)
+    });
+    if (res.ok) { success.style.display = 'block'; this.reset(); }
+    else { throw new Error(); }
+  } catch { error.style.display = 'block'; }
+  btnText.textContent = 'Send Message'; btn.disabled = false;
+});
+
+/* Resume download */
+function generateResumePDF(e) {
+  e.preventDefault();
+  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Raj Gorane - CA Resume</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'DM Sans',sans-serif;color:#0a1628;background:#fff;padding:36px 42px;font-size:10.5px;line-height:1.55;}
+h1{font-family:'Playfair Display',serif;font-size:28px;color:#0a1628;letter-spacing:-.02em;}
+.gold{color:#c9a84c;}
+.header{border-bottom:2.5px solid #0a1628;padding-bottom:13px;margin-bottom:16px;}
+.contacts{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;font-size:9.5px;color:#4a6080;}
+h2{font-family:'Playfair Display',serif;font-size:12.5px;color:#0f2040;border-bottom:1.5px solid rgba(201,168,76,.45);padding-bottom:4px;margin:16px 0 8px;letter-spacing:.02em;}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.role{font-weight:700;font-size:11px;color:#0a1628;}
+.company{font-size:9px;color:#7a8ea8;margin-bottom:5px;}
+ul{padding-left:14px;margin:4px 0 6px;}
+li{margin-bottom:3.5px;font-size:10px;color:#2a3e58;}
+li strong{color:#0a1628;}
+.pct{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#0f2040;flex-shrink:0;}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;}
+.sub-h{font-size:10px;font-weight:700;color:#0a1628;margin:8px 0 3px;display:block;}
+.skills-g{display:grid;grid-template-columns:1fr 1fr;gap:5px 22px;}
+.sk strong{font-size:9.5px;color:#0f2040;}
+.sk span{font-size:9.5px;color:#4a6080;}
+.badge{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0f2040;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:2px 8px;margin-left:8px;}
+</style></head><body>
+<div class="header">
+  <h1>Raj <span class="gold">Gorane</span> <span class="badge">CA · ICAI</span></h1>
+  <div style="font-size:9.5px;color:#4a6080;margin-top:3px;">Finance, Taxation &amp; Automation Specialist</div>
+  <div class="contacts">
+    <span>📞 XXXXXXXXXX</span>
+    <span>✉️ rajgorane12@gmail.com</span>
+    <span>🔗 linkedin.com/in/raj-gorane-a31753233</span>
+    <span>📍 Tilak Nagar, Indore</span>
+  </div>
+</div>
+
+<h2>WORK EXPERIENCE</h2>
+<div class="row"><span class="role">Assistant Manager – Finance &nbsp;|&nbsp; ALLEN Career Institute, Kota</span><span style="font-size:9px;color:#c9a84c;">May 2025 – Present</span></div>
+<div class="company">One of India's largest coaching institutions · 3 lakh+ students annually · 60+ cities</div>
+<ul>
+  <li>Prepared financial statements for overseas entities (local GAAP); applied <strong>Ind AS 116</strong> to 400+ leases (modifications/terminations) on Excel without specialised software.</li>
+  <li>Core team member in <strong>Oracle ERP rollout</strong> — designed Chart of Accounts, Fixed Asset Register &amp; Tax structures; co-ordinated with Implementation Partner and IT team.</li>
+  <li>Automated <strong>MSME Form-1 filing</strong> (Python) and built <strong>ML-based bank narration tagging tool</strong> (90%+ accuracy) for Cash MIS reporting.</li>
+  <li>Managed end-to-end MIS dashboards; assisted in Statutory Audit (RPT, FD, Loan schedules) and coordinated with Cost Auditor.</li>
+</ul>
+<div class="row" style="margin-top:9px;"><span class="role">Finance &amp; Operations Consultant &nbsp;|&nbsp; Raj Ratan Tours &amp; Travels, Indore</span><span style="font-size:9px;color:#c9a84c;">Jan 2025 – Apr 2025</span></div>
+<ul>
+  <li>Built Excel Trip Sheet automation tools, Excel-to-Tally import utility, and driver/cleaner tracking database; streamlined receivables and payables.</li>
+  <li>Reviewed revenue recognition, reconciled receipts; trained staff on Excel and AI tools; assisted in CA/MBA recruitment.</li>
+</ul>
+
+<h2>ARTICLESHIP — M/s Khandelwal Kakani &amp; Co., Indore (Apr 2022 – Apr 2025)</h2>
+<div style="font-size:9px;color:#7a8ea8;margin-bottom:8px;">Leading CA firm in Central India since 1978 · 9 Partners · Direct &amp; Indirect Taxation, Audit</div>
+<div class="two">
+<div>
+  <span class="sub-h">Indirect Taxation</span>
+  <ul>
+    <li>GST compliance — <strong>GSTR-1, 3B, 9/9C</strong>; GSTR-2A reconciliation; advisory on taxability &amp; exemptions.</li>
+    <li>ITC reversals under <strong>Rule 37 &amp; Section 50(3) CGST Act</strong> — secured relief of <strong>₹24 Lacs</strong> interest demand before Commissioner (Appeals), CGST, Indore.</li>
+    <li>Represented case before GST Adjudicating Authority (Sec 22) — <strong>order passed in favour</strong>.</li>
+  </ul>
+  <span class="sub-h">Direct Taxation</span>
+  <ul>
+    <li>ITR filing (CompuOffice &amp; IT Portal), advance tax, TDS/TCS for individuals, HUFs, firms, trusts &amp; companies.</li>
+    <li>Assisted in <strong>₹84 Lacs bogus sales case</strong> — proceedings stayed; ITAT appeal allowing <strong>₹2.33 Cr exemption u/s 54B</strong>.</li>
+  </ul>
+</div>
+<div>
+  <span class="sub-h">Automation</span>
+  <ul>
+    <li><strong>VBA code for GSTR-1A invoice amendments</strong> — reduced processing time by 70%, zero manual errors.</li>
+    <li><strong>Excel-to-Tally TDL import tool</strong> — 90% efficiency improvement.</li>
+    <li>VBA functions for TDS interest &amp; income tax calculations — significant time savings in quarterly filings.</li>
+  </ul>
+  <span class="sub-h">Audit &amp; Corporate Compliance</span>
+  <ul>
+    <li>Tax audits (clients &amp; trusts); Statutory audits (NwayERP); PSU Bank branch audit.</li>
+    <li>Forensic audit (manufacturing firm post-fire); ROC filings (AOC-4, MGT-7, DPT-3); Section 8 Company restructuring; CMA credit appraisal.</li>
+  </ul>
+</div>
+</div>
+
+<h2>EDUCATION</h2>
+<div class="two">
+<div>
+  <div class="row"><span><strong>CA Final</strong> — ICAI, Nov 2024</span><span class="pct">66.83%</span></div>
+  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">First Attempt · No Private Coaching · Exemption in 4 Subjects</div>
+  <div class="row"><span><strong>CA Intermediate</strong> — ICAI, Dec 2021</span><span class="pct">60.25%</span></div>
+  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">Exemption in Group 1 · 482/800</div>
+  <div class="row"><span><strong>CA Foundation</strong> — ICAI, Dec 2020</span><span class="pct">70.25%</span></div>
+  <div style="font-size:9px;color:#7a8ea8;">Passed with Distinction</div>
+</div>
+<div>
+  <div class="row"><span><strong>B.Com (CA)</strong> — DAVV, Apr 2023</span><span class="pct">72.44%</span></div>
+  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">First Division</div>
+  <div class="row"><span><strong>Class 12th</strong> — CBSE, Mar 2020</span><span class="pct">96.6%</span></div>
+  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">District Topper</div>
+  <div class="row"><span><strong>Class 10th</strong> — CBSE, Mar 2018</span><span class="pct">82.4%</span></div>
+</div>
+</div>
+
+<h2>TECHNICAL SKILLS</h2>
+<div class="skills-g">
+  <div class="sk"><strong>Taxation &amp; Compliance: </strong><span>CompuOffice GST/IT/TDS · Tally · NwayERP · GST Portal · IT Portal</span></div>
+  <div class="sk"><strong>Analytics &amp; BI: </strong><span>Advanced Excel · Power Query · Power BI · MS Access · MIS Dashboards</span></div>
+  <div class="sk"><strong>Automation &amp; ML: </strong><span>Python · VBA · TDL · ML Bank Tagging · Oracle ERP · MSME Automation</span></div>
+  <div class="sk"><strong>Audit &amp; Finance: </strong><span>Statutory · Tax · Forensic · PSU Bank · Ind AS 116 · CARO 2020 · CMA</span></div>
+</div>
+
+<h2>ACHIEVEMENTS</h2>
+<ul>
+  <li><strong>First Rank – GMCS Batch</strong> for outstanding Presentation Skills (Cash Award).</li>
+  <li>Secured ₹24 Lacs interest relief (CGST Commissioner Appeals) and ₹2.33 Cr ITAT exemption u/s 54B.</li>
+  <li>District Topper – Class XII CBSE (96.6%). First in School Chess &amp; Table Tennis; participated in Inter-School Volleyball.</li>
+</ul>
+</body></html>`;
+
+  const blob = new Blob([html], { type: 'text/html' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'Raj_Gorane_CA_Resume.html';
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+</body>
+</html>
