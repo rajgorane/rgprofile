@@ -548,8 +548,16 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);padding:
 /* Accordion */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
-  body.classList.add('open');
-  btn.classList.add('open');
+  
+  const isOpen = body.classList.contains('open');
+
+  if (isOpen) {
+    body.classList.remove('open');
+    btn.classList.remove('open');
+  } else {
+    body.classList.add('open');
+    btn.classList.add('open');
+  }
 }
 
 /* Scroll animations */
