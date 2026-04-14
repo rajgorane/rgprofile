@@ -31,10 +31,21 @@
 
   --border:       #e5e7eb;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
-body{font-family:'DM Sans',sans-serif;background:var(--cream);color:var(--text);overflow-x:hidden;}
 
+/* Reset / base styles */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: system-ui, -apple-system, sans-serif;
+}
 /* HERO */
 .hero{background:var(--navy);min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;overflow:hidden;padding:70px 24px 100px;}
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 15% 25%,rgba(201,168,76,.10) 0%,transparent 65%),radial-gradient(ellipse 50% 70% at 85% 75%,rgba(22,45,86,.9) 0%,transparent 60%);}
