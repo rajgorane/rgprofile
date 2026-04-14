@@ -513,7 +513,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);padding:
     <h2 class="resume-title">Download My <em>Resume</em></h2>
     <p class="resume-sub">A concise summary of my qualifications, experience, and achievements — ready for your review or to share with your team.</p>
     <div class="resume-btns">
-      <a href="#" class="btn-primary" onclick="generateResumePDF(event)">
+     <a href="/Raj_Gorane_CA_Resume.pdf" class="btn-primary" download>
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         Download Resume
       </a>
@@ -522,7 +522,7 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);padding:
         View LinkedIn Profile
       </a>
     </div>
-    <p class="resume-note">Opens as an HTML file · Print to PDF for best results · Last updated 2025</p>
+    <p class="resume-note">Dowload Resume in PDF for best results · Last updated 2025</p>
   </div>
 </section>
 
@@ -542,11 +542,8 @@ footer{background:var(--navy);border-top:1px solid rgba(201,168,76,.12);padding:
 /* Accordion */
 function toggleAcc(btn) {
   const body = btn.nextElementSibling;
-  const isOpen = body.classList.contains('open');
-  const group = btn.closest('.acc-group');
-  group.querySelectorAll('.acc-body.open').forEach(b => b.classList.remove('open'));
-  group.querySelectorAll('.acc-header.open').forEach(h => h.classList.remove('open'));
-  if (!isOpen) { body.classList.add('open'); btn.classList.add('open'); }
+  body.classList.add('open');
+  btn.classList.add('open');
 }
 
 /* Scroll animations */
@@ -579,135 +576,6 @@ document.getElementById('contactForm').addEventListener('submit', async function
   btnText.textContent = 'Send Message'; btn.disabled = false;
 });
 
-/* Resume download */
-function generateResumePDF(e) {
-  e.preventDefault();
-  const html = `<!DOCTYPE html><html><head><meta charset="UTF-8"/><title>Raj Gorane - CA Resume</title>
-<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;600&display=swap');
-*{margin:0;padding:0;box-sizing:border-box;}
-body{font-family:'DM Sans',sans-serif;color:#0a1628;background:#fff;padding:36px 42px;font-size:10.5px;line-height:1.55;}
-h1{font-family:'Playfair Display',serif;font-size:28px;color:#0a1628;letter-spacing:-.02em;}
-.gold{color:#c9a84c;}
-.header{border-bottom:2.5px solid #0a1628;padding-bottom:13px;margin-bottom:16px;}
-.contacts{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;font-size:9.5px;color:#4a6080;}
-h2{font-family:'Playfair Display',serif;font-size:12.5px;color:#0f2040;border-bottom:1.5px solid rgba(201,168,76,.45);padding-bottom:4px;margin:16px 0 8px;letter-spacing:.02em;}
-.row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
-.role{font-weight:700;font-size:11px;color:#0a1628;}
-.company{font-size:9px;color:#7a8ea8;margin-bottom:5px;}
-ul{padding-left:14px;margin:4px 0 6px;}
-li{margin-bottom:3.5px;font-size:10px;color:#2a3e58;}
-li strong{color:#0a1628;}
-.pct{font-family:'Playfair Display',serif;font-size:12px;font-weight:700;color:#0f2040;flex-shrink:0;}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;}
-.sub-h{font-size:10px;font-weight:700;color:#0a1628;margin:8px 0 3px;display:block;}
-.skills-g{display:grid;grid-template-columns:1fr 1fr;gap:5px 22px;}
-.sk strong{font-size:9.5px;color:#0f2040;}
-.sk span{font-size:9.5px;color:#4a6080;}
-.badge{display:inline-block;font-size:8.5px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:#0f2040;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.3);border-radius:4px;padding:2px 8px;margin-left:8px;}
-</style></head><body>
-<div class="header">
-  <h1>Raj <span class="gold">Gorane</span> <span class="badge">CA · ICAI</span></h1>
-  <div style="font-size:9.5px;color:#4a6080;margin-top:3px;">Finance, Taxation &amp; Automation Specialist</div>
-  <div class="contacts">
-    <span>📞 XXXXXXXXXX</span>
-    <span>✉️ rajgorane12@gmail.com</span>
-    <span>🔗 linkedin.com/in/raj-gorane-a31753233</span>
-    <span>📍 Tilak Nagar, Indore</span>
-  </div>
-</div>
-
-<h2>WORK EXPERIENCE</h2>
-<div class="row"><span class="role">Assistant Manager – Finance &nbsp;|&nbsp; ALLEN Career Institute, Kota</span><span style="font-size:9px;color:#c9a84c;">May 2025 – Present</span></div>
-<div class="company">One of India's largest coaching institutions · 3 lakh+ students annually · 60+ cities</div>
-<ul>
-  <li>Prepared financial statements for overseas entities (local GAAP); applied <strong>Ind AS 116</strong> to 400+ leases (modifications/terminations) on Excel without specialised software.</li>
-  <li>Core team member in <strong>Oracle ERP rollout</strong> — designed Chart of Accounts, Fixed Asset Register &amp; Tax structures; co-ordinated with Implementation Partner and IT team.</li>
-  <li>Automated <strong>MSME Form-1 filing</strong> (Python) and built <strong>ML-based bank narration tagging tool</strong> (90%+ accuracy) for Cash MIS reporting.</li>
-  <li>Managed end-to-end MIS dashboards; assisted in Statutory Audit (RPT, FD, Loan schedules) and coordinated with Cost Auditor.</li>
-</ul>
-<div class="row" style="margin-top:9px;"><span class="role">Finance &amp; Operations Consultant &nbsp;|&nbsp; Raj Ratan Tours &amp; Travels, Indore</span><span style="font-size:9px;color:#c9a84c;">Jan 2025 – Apr 2025</span></div>
-<ul>
-  <li>Built Excel Trip Sheet automation tools, Excel-to-Tally import utility, and driver/cleaner tracking database; streamlined receivables and payables.</li>
-  <li>Reviewed revenue recognition, reconciled receipts; trained staff on Excel and AI tools; assisted in CA/MBA recruitment.</li>
-</ul>
-
-<h2>ARTICLESHIP — M/s Khandelwal Kakani &amp; Co., Indore (Apr 2022 – Apr 2025)</h2>
-<div style="font-size:9px;color:#7a8ea8;margin-bottom:8px;">Leading CA firm in Central India since 1978 · 9 Partners · Direct &amp; Indirect Taxation, Audit</div>
-<div class="two">
-<div>
-  <span class="sub-h">Indirect Taxation</span>
-  <ul>
-    <li>GST compliance — <strong>GSTR-1, 3B, 9/9C</strong>; GSTR-2A reconciliation; advisory on taxability &amp; exemptions.</li>
-    <li>ITC reversals under <strong>Rule 37 &amp; Section 50(3) CGST Act</strong> — secured relief of <strong>₹24 Lacs</strong> interest demand before Commissioner (Appeals), CGST, Indore.</li>
-    <li>Represented case before GST Adjudicating Authority (Sec 22) — <strong>order passed in favour</strong>.</li>
-  </ul>
-  <span class="sub-h">Direct Taxation</span>
-  <ul>
-    <li>ITR filing (CompuOffice &amp; IT Portal), advance tax, TDS/TCS for individuals, HUFs, firms, trusts &amp; companies.</li>
-    <li>Assisted in <strong>₹84 Lacs bogus sales case</strong> — proceedings stayed; ITAT appeal allowing <strong>₹2.33 Cr exemption u/s 54B</strong>.</li>
-  </ul>
-</div>
-<div>
-  <span class="sub-h">Automation</span>
-  <ul>
-    <li><strong>VBA code for GSTR-1A invoice amendments</strong> — reduced processing time by 70%, zero manual errors.</li>
-    <li><strong>Excel-to-Tally TDL import tool</strong> — 90% efficiency improvement.</li>
-    <li>VBA functions for TDS interest &amp; income tax calculations — significant time savings in quarterly filings.</li>
-  </ul>
-  <span class="sub-h">Audit &amp; Corporate Compliance</span>
-  <ul>
-    <li>Tax audits (clients &amp; trusts); Statutory audits (NwayERP); PSU Bank branch audit.</li>
-    <li>Forensic audit (manufacturing firm post-fire); ROC filings (AOC-4, MGT-7, DPT-3); Section 8 Company restructuring; CMA credit appraisal.</li>
-  </ul>
-</div>
-</div>
-
-<h2>EDUCATION</h2>
-<div class="two">
-<div>
-  <div class="row"><span><strong>CA Final</strong> — ICAI, Nov 2024</span><span class="pct">66.83%</span></div>
-  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">First Attempt · No Private Coaching · Exemption in 4 Subjects</div>
-  <div class="row"><span><strong>CA Intermediate</strong> — ICAI, Dec 2021</span><span class="pct">60.25%</span></div>
-  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">Exemption in Group 1 · 482/800</div>
-  <div class="row"><span><strong>CA Foundation</strong> — ICAI, Dec 2020</span><span class="pct">70.25%</span></div>
-  <div style="font-size:9px;color:#7a8ea8;">Passed with Distinction</div>
-</div>
-<div>
-  <div class="row"><span><strong>B.Com (CA)</strong> — DAVV, Apr 2023</span><span class="pct">72.44%</span></div>
-  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">First Division</div>
-  <div class="row"><span><strong>Class 12th</strong> — CBSE, Mar 2020</span><span class="pct">96.6%</span></div>
-  <div style="font-size:9px;color:#7a8ea8;margin-bottom:5px;">District Topper</div>
-  <div class="row"><span><strong>Class 10th</strong> — CBSE, Mar 2018</span><span class="pct">82.4%</span></div>
-</div>
-</div>
-
-<h2>TECHNICAL SKILLS</h2>
-<div class="skills-g">
-  <div class="sk"><strong>Taxation &amp; Compliance: </strong><span>CompuOffice GST/IT/TDS · Tally · NwayERP · GST Portal · IT Portal</span></div>
-  <div class="sk"><strong>Analytics &amp; BI: </strong><span>Advanced Excel · Power Query · Power BI · MS Access · MIS Dashboards</span></div>
-  <div class="sk"><strong>Automation &amp; ML: </strong><span>Python · VBA · TDL · ML Bank Tagging · Oracle ERP · MSME Automation</span></div>
-  <div class="sk"><strong>Audit &amp; Finance: </strong><span>Statutory · Tax · Forensic · PSU Bank · Ind AS 116 · CARO 2020 · CMA</span></div>
-</div>
-
-<h2>ACHIEVEMENTS</h2>
-<ul>
-  <li><strong>First Rank – GMCS Batch</strong> for outstanding Presentation Skills (Cash Award).</li>
-  <li>Secured ₹24 Lacs interest relief (CGST Commissioner Appeals) and ₹2.33 Cr ITAT exemption u/s 54B.</li>
-  <li>District Topper – Class XII CBSE (96.6%). First in School Chess &amp; Table Tennis; participated in Inter-School Volleyball.</li>
-</ul>
-</body></html>`;
-
-  const blob = new Blob([html], { type: 'text/html' });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'Raj_Gorane_CA_Resume.html';
-  document.body.appendChild(a);
-  a.click();
-  document.body.removeChild(a);
-  URL.revokeObjectURL(url);
-}
 </script>
 <script defer src="/_vercel/analytics/script.js"></script>
 </body>
